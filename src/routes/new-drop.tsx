@@ -12,13 +12,13 @@ import { SAMPLE_JD } from "@/lib/relay-data";
 export const Route = createFileRoute("/new-drop")({
   head: () => ({
     meta: [
-      { title: "New Drop — Relay" },
+      { title: "New Drop — Applied" },
       {
         name: "description",
         content:
           "Paste a raw job description, extract company, role and tech stack, and generate a resume snapshot grounded in your Master Vault.",
       },
-      { property: "og:title", content: "New Drop — Relay" },
+      { property: "og:title", content: "New Drop — Applied" },
       {
         property: "og:description",
         content: "Manual ingestion and AI tailoring for job applications.",
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/new-drop")({
 });
 
 const TAILORED = `# Subham Ghosh
-Backend Engineer · Bengaluru · subham@relay.dev
+Backend Engineer · Bengaluru · subham@applied.dev
 
 ## Summary
 Backend engineer with 3 years shipping high-throughput order and settlement
@@ -47,7 +47,7 @@ Python · Kafka · Redis · PostgreSQL · Docker · AWS
 - Owned PostgreSQL partitioning migration across 900GB of ledger data.
 
 ## Projects
-**Relay** — append-only event pipeline tracking applications from email.
+**Applied** — append-only event pipeline tracking applications from email.
 **Kvstore** — Raft-backed key-value store in Go with snapshotting.
 
 ## Education

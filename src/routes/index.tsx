@@ -13,13 +13,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Relay — Pipeline Dashboard" },
+      { title: "Applied — Pipeline Dashboard" },
       {
         name: "description",
         content:
-          "Relay is an AI-powered autonomous job application tracker: a Kanban pipeline fed by a daily Gmail worker and grounded resume snapshots.",
+          "Applied is an AI-powered autonomous job application tracker: a Kanban pipeline fed by a daily Gmail worker and grounded resume snapshots.",
       },
-      { property: "og:title", content: "Relay — Pipeline Dashboard" },
+      { property: "og:title", content: "Applied — Pipeline Dashboard" },
       {
         property: "og:description",
         content: "Track every application stage from applied to offer, with an append-only audit trail.",
