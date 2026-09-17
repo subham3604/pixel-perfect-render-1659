@@ -20,7 +20,7 @@ export function AppCard({
   return (
     <article
       onClick={() => onOpen(app)}
-      className="group cursor-pointer rounded-lg border border-border bg-surface p-3 shadow-sm transition-colors hover:border-ai/35 hover:bg-elevated"
+      className="group cursor-pointer rounded-lg border border-border bg-surface p-3 shadow-sm transition-colors hover:border-ai/55 hover:bg-elevated"
     >
       <div className="flex items-start gap-2.5">
         <span className="grid size-8 shrink-0 place-items-center rounded-md border border-border bg-elevated text-xs font-semibold">

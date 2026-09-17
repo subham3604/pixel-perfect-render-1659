@@ -11,7 +11,7 @@ export function AttentionBanner() {
   if (dismissed) return null;
 
   return (
-    <div className="rounded-lg border border-warning/25 bg-warning/10">
+    <div className="rounded-lg border border-warning/40 bg-warning/15">
       <button
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center gap-2 px-3 py-2 text-left"
@@ -29,7 +29,7 @@ export function AttentionBanner() {
       </button>
 
       {open && (
-        <div className="flex flex-wrap items-center gap-2 border-t border-warning/15 px-3 py-3">
+        <div className="flex flex-wrap items-center gap-2 border-t border-warning/30 px-3 py-3">
           <p className="mr-2 text-xs text-muted-foreground">
             Email from <span className="text-foreground">“Bundl Technologies”</span> with no role
             specified. 2 active applications match.
