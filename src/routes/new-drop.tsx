@@ -27,7 +27,7 @@ export const Route = createFileRoute("/new-drop")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: NewDrop;
+  component: NewDrop,
 });
 
 const TAILORED = `# Subham Ghosh
