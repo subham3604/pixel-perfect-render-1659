@@ -6,6 +6,7 @@ import { AttentionBanner } from "@/components/relay/AttentionBanner";
 import { AppCard } from "@/components/relay/AppCard";
 import { DetailDrawer } from "@/components/relay/DetailDrawer";
 import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
 import { APPLICATIONS, STAGES, type Application } from "@/lib/relay-data";
 import { cn } from "@/lib/utils";
 
@@ -90,18 +91,21 @@ function Pipeline() {
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {FILTERS.map((f) => (
-            <button
+            <Button
               key={f}
+              type="button"
+              variant="ghost"
+              size="sm"
               onClick={() => setFilter(f)}
               className={cn(
-                "rounded-full border px-3 py-1 text-[11px] transition-colors",
+                "h-7 rounded-full border px-3 text-[11px] shadow-none transition-colors",
                 filter === f
                   ? "border-ai/50 bg-ai/15 text-ai"
                   : "border-border bg-surface text-muted-foreground hover:text-foreground",
               )}
             >
               {f}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -115,7 +119,14 @@ function Pipeline() {
             return (
               <section
                 key={stage.id}
-                className="flex min-h-40 flex-col rounded-lg border border-border bg-background/40"
+                className={cn(
+                  "flex min-h-40 flex-col rounded-lg border",
+                  stage.id === "applied" && "border-info/20 bg-info/5",
+                  stage.id === "oa" && "border-warning/20 bg-warning/5",
+                  stage.id === "interview" && "border-ai/20 bg-ai/5",
+                  stage.id === "offer" && "border-success/20 bg-success/5",
+                  stage.id === "rejected" && "border-danger/15 bg-danger/5",
+                )}
               >
                 <header className="flex items-center gap-2 border-b border-border px-3 py-2">
                   <span

@@ -82,7 +82,8 @@ export function DetailDrawer({
   const [note, setNote] = useState("");
 
   if (!app) return null;
-  const stage = STAGES.find((s) => s.id === app.stage)!;
+  const stage = STAGES.find((s) => s.id === app.stage);
+  if (!stage) return null;
 
   return (
     <Sheet open={!!app} onOpenChange={(o) => !o && onClose()}>
