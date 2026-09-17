@@ -71,9 +71,9 @@ function Pipeline() {
       setMetrics(m);
     } catch (err: any) {
       console.error("Failed to load pipeline data:", err);
-      const msg = err.message || "Failed to reach backend API on :8000";
+      const msg = "Unable to connect to server. Please ensure the service is running.";
       setError(msg);
-      toast.error("Could not fetch pipeline from FastAPI backend. Is backend running on :8000?");
+      toast.error("Could not load applications from server. Please check your connection.");
     } finally {
       setLoading(false);
     }
@@ -208,7 +208,6 @@ function Pipeline() {
               onClick={handleReset}
               disabled={loading}
               className="h-9 px-2.5 text-xs text-muted-foreground hover:text-foreground gap-1.5"
-              title="Reset search, clear filters, and reload pipeline data"
             >
               <RefreshCw className={cn("size-3.5", loading && "animate-spin")} />
               <span className="hidden sm:inline">Reset</span>

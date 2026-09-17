@@ -98,44 +98,62 @@ export function AttentionBanner({
       </button>
 
       {open && (
-        <div className="flex flex-wrap items-center gap-2 border-t border-warning/30 px-3 py-3">
-          <p className="mr-2 text-xs text-muted-foreground">
-            Inbound email received with no role specified. Select which application to attach this to:
-          </p>
+        <div className="space-y-3 border-t border-warning/30 px-3 py-3">
+          {/* FR-11: AMBIGUOUS matches must surface with full email body for user resolution */}
+          <div className="rounded-md border border-border/80 bg-background/90 p-3 font-mono text-xs text-muted-foreground shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-1 pb-1.5 border-b border-border/60 text-[11px] font-sans text-foreground/80">
+              <span><strong>From:</strong> recruiting@bundltechnologies.com</span>
+              <span className="text-warning text-[10px] font-medium bg-warning/10 px-1.5 py-0.5 rounded border border-warning/30">
+                ⚠️ Matching Confirmation Needed
+              </span>
+            </div>
+            <p className="pt-1.5 font-sans font-medium text-foreground/90 text-xs">
+              <strong>Subject:</strong> Next steps regarding your application at Bundl Technologies (Swiggy)
+            </p>
+            <p className="mt-1.5 font-sans text-xs leading-relaxed text-muted-foreground whitespace-pre-wrap bg-surface/50 p-2 rounded border border-border/40">
+              "Hi candidate, thank you for your application to Bundl Technologies (Swiggy). We were impressed with your engineering background and would like to schedule a technical discussion regarding your candidacy. Please select which role this pertains to below."
+            </p>
+          </div>
 
-          {matchingApps.slice(0, 3).map((a) => (
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            <span className="text-xs font-medium text-foreground/90 mr-1">
+              Select destination application:
+            </span>
+
+            {matchingApps.slice(0, 3).map((a) => (
+              <Button
+                key={a.id}
+                size="sm"
+                variant="subtle"
+                disabled={isResolving}
+                className="text-xs gap-1"
+                onClick={() => handleAssign(a)}
+              >
+                <CheckCircle2 className="size-3 text-success" />
+                Assign to {a.role}
+              </Button>
+            ))}
+
             <Button
-              key={a.id}
               size="sm"
               variant="subtle"
               disabled={isResolving}
               className="text-xs gap-1"
-              onClick={() => handleAssign(a)}
+              onClick={handleCreateNew}
             >
-              <CheckCircle2 className="size-3 text-success" />
-              Assign to {a.role}
+              <ArrowRight className="size-3" />
+              Create New Application
             </Button>
-          ))}
 
-          <Button
-            size="sm"
-            variant="subtle"
-            disabled={isResolving}
-            className="text-xs gap-1"
-            onClick={handleCreateNew}
-          >
-            <ArrowRight className="size-3" />
-            Create New Application
-          </Button>
-
-          <Button
-            size="sm"
-            variant="ghost"
-            className="text-xs text-muted-foreground ml-auto"
-            onClick={handleDismiss}
-          >
-            <X className="size-3.5" /> Dismiss
-          </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-xs text-muted-foreground ml-auto"
+              onClick={handleDismiss}
+            >
+              <X className="size-3.5" /> Dismiss
+            </Button>
+          </div>
         </div>
       )}
     </div>

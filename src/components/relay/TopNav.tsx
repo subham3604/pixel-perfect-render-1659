@@ -4,7 +4,7 @@ import { Radio } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/relay/ThemeToggle";
 import { fetchWorkerStatus, type WorkerStatus } from "@/lib/api";
-import { formatTimelineDate, formatFullDateTime } from "@/lib/date-format";
+import { formatTimelineDate } from "@/lib/date-format";
 
 const links = [
   { to: "/", label: "Pipeline" },
@@ -53,14 +53,7 @@ export function TopNav() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <div
-            className="hidden items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 sm:flex"
-            title={
-              workerStatus?.last_synced_at
-                ? `Last sync: ${formatFullDateTime(workerStatus.last_synced_at)} · Schedule: ${workerStatus.schedule}`
-                : "Gmail Worker running in background container"
-            }
-          >
+          <div className="hidden items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 sm:flex">
             <span className="relative grid size-2 place-items-center">
               <span
                 className={cn(
@@ -70,7 +63,7 @@ export function TopNav() {
               />
             </span>
             <span className="text-[11px] text-muted-foreground">
-              <span className="text-foreground">Daily Gmail Worker: Active</span>
+              <span className="text-foreground">Gmail Sync: Active</span>
               <span className="hidden sm:inline"> · Last synced {syncDisplay}</span>
             </span>
           </div>

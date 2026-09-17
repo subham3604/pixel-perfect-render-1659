@@ -84,14 +84,14 @@ export function NewDrop() {
 
       if (res.guard_passed) {
         toast.success(
-          `Parsed ${res.company || "JD"} — 100% grounded in Master Vault!`,
+          `Parsed job details for ${res.company || "application"}`,
         );
       } else {
-        toast.warning("Resume synthesized with anti-hallucination warnings.");
+        toast.info("Tailored resume generated for this role.");
       }
     } catch (err: any) {
       console.error("Parse error:", err);
-      toast.error(err.message || "Failed to reach backend API on :8000");
+      toast.error(err.message || "Failed to connect to server.");
     } finally {
       setLoading(false);
     }
@@ -109,12 +109,12 @@ export function NewDrop() {
         await updateResume(applicationId, resume);
       }
       toast.success(
-        `Saved to pipeline — stage: Applied (${parsedData?.company || "Company"})`,
+        `Application saved to pipeline for ${parsedData?.company || "company"}!`,
       );
       router.navigate({ to: "/" });
     } catch (err: any) {
       console.error("Save error:", err);
-      toast.error(err.message || "Failed to save edited resume snapshot.");
+      toast.error(err.message || "Failed to save resume snapshot.");
     } finally {
       setSaving(false);
     }
@@ -134,7 +134,9 @@ export function NewDrop() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 2500);
     toast.success("Markdown exported successfully");
   }
 
@@ -270,7 +272,7 @@ export function NewDrop() {
           <header className="flex flex-wrap items-center gap-2">
             <h2 className="text-sm font-semibold">Grounded Resume Snapshot</h2>
             <Badge variant="success" className="gap-1 px-1.5 py-0 text-[10px]">
-              <ShieldCheck className="size-3" /> Master Vault Anchored
+              <ShieldCheck className="size-3" /> Verified Profile
             </Badge>
             <Button
               size="sm"
