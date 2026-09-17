@@ -1,6 +1,7 @@
 import { Clock, Eye, PenLine, ArrowUpRight, Flame } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Application } from "@/lib/relay-data";
+import { formatApplied, formatFullDateTime } from "@/lib/date-format";
 
 const sourceTone: Record<string, "info" | "muted" | "ai"> = {
   Naukri: "info",
@@ -17,6 +18,9 @@ export function AppCard({
   app: Application;
   onOpen: (app: Application) => void;
 }) {
+  const appliedDisplay = formatApplied(app.applied, app.applied_at);
+  const fullTooltip = formatFullDateTime(app.applied_at || app.applied);
+
   return (
     <article
       onClick={() => onOpen(app)}
@@ -38,9 +42,12 @@ export function AppCard({
         </Badge>
       </div>
 
-      <div className="mt-2.5 flex items-center gap-1.5 text-[11px] text-muted-foreground">
-        <Clock className="size-3" />
-        {app.applied}
+      <div
+        className="mt-2.5 flex items-center gap-1.5 text-[11px] text-muted-foreground"
+        title={fullTooltip || undefined}
+      >
+        <Clock className="size-3 shrink-0" />
+        <span className="truncate">{appliedDisplay}</span>
       </div>
 
       {app.deadline && (

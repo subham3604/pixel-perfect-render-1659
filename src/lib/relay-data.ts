@@ -7,6 +7,7 @@ export type TimelineEvent = {
   title: string;
   detail: string;
   date: string;
+  timestamp?: string | null;
   origin: "worker" | "manual" | "override";
   payload: string;
 };
@@ -18,6 +19,7 @@ export type Application = {
   stage: Stage;
   source: Source;
   applied: string;
+  applied_at?: string | null;
   deadline?: string;
   deadlineTone?: "warning" | "danger";
   stack: string[];

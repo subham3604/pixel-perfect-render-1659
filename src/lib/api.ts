@@ -2,6 +2,7 @@ import type { Application } from "./relay-data";
 
 export interface PipelineMetrics {
   total: number;
+  total_active: number;
   applied: number;
   pending_oa: number;
   active_interviews: number;
@@ -38,22 +39,36 @@ export interface TextUpdateResponse {
   stage: string;
 }
 
+export interface WorkerStatus {
+  active: boolean;
+  schedule: string;
+  last_synced_at?: string | null;
+  last_checked_boundary?: string | null;
+  total_worker_events: number;
+}
+
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 export async function fetchMetrics(): Promise<PipelineMetrics> {
-  const res = await fetch(`${API_BASE}/api/metrics`);
+  const res = await fetch(`${API_BASE}/api/metrics`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to fetch metrics: ${res.statusText}`);
   return res.json();
 }
 
+export async function fetchWorkerStatus(): Promise<WorkerStatus> {
+  const res = await fetch(`${API_BASE}/api/worker/status`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to fetch worker status: ${res.statusText}`);
+  return res.json();
+}
+
 export async function fetchApplications(): Promise<Application[]> {
-  const res = await fetch(`${API_BASE}/api/applications`);
+  const res = await fetch(`${API_BASE}/api/applications`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to fetch applications: ${res.statusText}`);
   return res.json();
 }
 
 export async function fetchApplication(appId: string): Promise<Application> {
-  const res = await fetch(`${API_BASE}/api/applications/${appId}`);
+  const res = await fetch(`${API_BASE}/api/applications/${appId}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to fetch application ${appId}: ${res.statusText}`);
   return res.json();
 }
