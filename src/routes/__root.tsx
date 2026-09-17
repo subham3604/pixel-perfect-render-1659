@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Relay — Autonomous Job Application Tracker" },
+      { title: "Applied — Autonomous Job Application Tracker" },
       {
         name: "description",
         content:
-          "Relay tracks your job applications end to end: paste a JD, get a grounded resume snapshot, and let the Gmail worker advance the pipeline.",
+          "Applied tracks your job applications end to end: paste a JD, get a grounded resume snapshot, and let the Gmail worker advance the pipeline.",
       },
-      { property: "og:title", content: "Relay — Autonomous Job Application Tracker" },
+      { property: "og:title", content: "Applied — Autonomous Job Application Tracker" },
       {
         property: "og:description",
         content: "AI-powered career pipeline engine with an append-only audit trail.",

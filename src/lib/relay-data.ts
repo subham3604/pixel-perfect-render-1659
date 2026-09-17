@@ -36,7 +36,7 @@ export const STAGES: { id: Stage; label: string; hint: string }[] = [
 ];
 
 const baseResume = (company: string, role: string) => `# Subham Ghosh
-Backend Engineer · Bengaluru · subham@relay.dev
+Backend Engineer · Bengaluru · subham@applied.dev
 
 ## Summary
 Backend engineer with 3 years building high-throughput services. Tailored for

@@ -18,7 +18,7 @@ export function TopNav() {
           <span className="grid size-7 place-items-center rounded-md bg-ai/15 text-ai shadow-sm">
             <Radio className="size-4" />
           </span>
-          <span className="text-sm font-semibold tracking-tight">Relay</span>
+          <span className="text-sm font-semibold tracking-tight">Applied</span>
         </Link>
 
         <nav className="flex items-center gap-1 rounded-lg border border-border bg-surface p-1">

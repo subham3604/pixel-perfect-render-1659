@@ -6,7 +6,7 @@ type Theme = "light" | "dark";
 
 function getPreferredTheme(): Theme {
   if (typeof window === "undefined") return "light";
-  const saved = window.localStorage.getItem("relay-theme");
+  const saved = window.localStorage.getItem("applied-theme");
   if (saved === "light" || saved === "dark") return saved;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
@@ -28,7 +28,7 @@ export function ThemeToggle() {
     setTheme(next);
     document.documentElement.classList.toggle("dark", next === "dark");
     document.documentElement.style.colorScheme = next;
-    window.localStorage.setItem("relay-theme", next);
+    window.localStorage.setItem("applied-theme", next);
   };
 
   return (

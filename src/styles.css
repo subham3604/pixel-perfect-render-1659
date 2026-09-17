@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Relay design system — soft pastel workspace in light and dark modes.
+ * Applied design system — soft pastel workspace in light and dark modes.
  * All color values are oklch tokens; never hardcode colors in components.
  */
 
