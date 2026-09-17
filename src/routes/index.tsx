@@ -121,11 +121,11 @@ function Pipeline() {
                 key={stage.id}
                 className={cn(
                   "flex min-h-40 flex-col rounded-lg border",
-                  stage.id === "applied" && "border-info/20 bg-info/5",
-                  stage.id === "oa" && "border-warning/20 bg-warning/5",
-                  stage.id === "interview" && "border-ai/20 bg-ai/5",
-                  stage.id === "offer" && "border-success/20 bg-success/5",
-                  stage.id === "rejected" && "border-danger/15 bg-danger/5",
+                  stage.id === "applied" && "border-info/30 bg-info/10",
+                  stage.id === "oa" && "border-warning/30 bg-warning/10",
+                  stage.id === "interview" && "border-ai/30 bg-ai/10",
+                  stage.id === "offer" && "border-success/30 bg-success/10",
+                  stage.id === "rejected" && "border-danger/25 bg-danger/10",
                 )}
               >
                 <header className="flex items-center gap-2 border-b border-border px-3 py-2">
