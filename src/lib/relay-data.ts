@@ -52,7 +52,7 @@ Python · FastAPI · Kafka · Redis · PostgreSQL · Docker · AWS
 - Owned PostgreSQL partitioning migration across 900GB of ledger data.
 
 ## Projects
-**Relay** — append-only event pipeline that tracks job applications from email.
+**Applied** — append-only event pipeline that tracks job applications from email.
 **Kvstore** — Raft-backed key-value store in Go with snapshotting.
 
 ## Education
