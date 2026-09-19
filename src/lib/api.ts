@@ -126,5 +126,88 @@ export async function updatePortalText(
   return res.json();
 }
 
+export type VaultCategory = "WORK_EXPERIENCE" | "PROJECT" | "SKILL" | "EDUCATION";
+
+export interface VaultBullet {
+  id: string;
+  category: VaultCategory;
+  title: string;
+  bullet_point: string;
+  tech_tags: string[];
+  created_at: string;
+}
+
+export interface VaultBulletCreate {
+  category: VaultCategory;
+  title: string;
+  bullet_point: string;
+  tech_tags?: string[];
+}
+
+export interface VaultBulletUpdate {
+  category?: VaultCategory;
+  title?: string;
+  bullet_point?: string;
+  tech_tags?: string[];
+}
+
+export async function fetchVaultBullets(
+  category?: string,
+  search?: string
+): Promise<VaultBullet[]> {
+  const params = new URLSearchParams();
+  if (category && category !== "ALL") params.append("category", category);
+  if (search && search.trim()) params.append("search", search.trim());
+  const qs = params.toString() ? `?${params.toString()}` : "";
+
+  const res = await fetch(`${API_BASE}/api/vault${qs}`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to fetch vault bullets: ${res.statusText}`);
+  return res.json();
+}
+
+export async function createVaultBullet(
+  data: VaultBulletCreate
+): Promise<VaultBullet> {
+  const res = await fetch(`${API_BASE}/api/vault`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || `Failed to create bullet: ${res.statusText}`);
+  }
+  return res.json();
+}
+
+export async function updateVaultBullet(
+  id: string,
+  data: VaultBulletUpdate
+): Promise<VaultBullet> {
+  const res = await fetch(`${API_BASE}/api/vault/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || `Failed to update bullet: ${res.statusText}`);
+  }
+  return res.json();
+}
+
+export async function deleteVaultBullet(
+  id: string
+): Promise<{ success: boolean; deleted_id: string }> {
+  const res = await fetch(`${API_BASE}/api/vault/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || `Failed to delete bullet: ${res.statusText}`);
+  }
+  return res.json();
+}
+
 
 

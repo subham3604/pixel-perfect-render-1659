@@ -9,6 +9,7 @@ import { formatTimelineDate } from "@/lib/date-format";
 const links = [
   { to: "/", label: "Pipeline" },
   { to: "/new-drop", label: "New Drop" },
+  { to: "/vault", label: "Vault" },
 ] as const;
 
 export function TopNav() {

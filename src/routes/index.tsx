@@ -82,6 +82,7 @@ function Pipeline() {
   const handleReset = useCallback(async () => {
     setQuery("");
     setFilter("All");
+    localStorage.removeItem("relay_ambiguous_banner_resolved");
     await loadData();
     toast.success("Filters reset & pipeline reloaded");
   }, [loadData]);
